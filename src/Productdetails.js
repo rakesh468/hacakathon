@@ -2,13 +2,14 @@ import { useHistory, useParams } from "react-router";
 import KeyboardBackspaceIcon from '@mui/icons-material/ArrowBack';
 import Button from '@mui/material/Button';
 import { useState,useEffect } from "react";
+import {API_URL} from './global-constant'
 export function Productdetails(){
     const history=useHistory();
     const {id}=useParams();
     
     const [newproduct,setnewproduct]=useState({})
     useEffect(()=>{
-        fetch(`https://6166c4d613aa1d00170a66f1.mockapi.io/products/${id}`,{method:"GET"})
+        fetch(`${API_URL}/products/${id}`,{method:"GET"})
         .then((data)=>data.json())
         .then((pd)=>setnewproduct(pd))
       },[id]);
